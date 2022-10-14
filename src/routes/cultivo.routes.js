@@ -6,7 +6,8 @@ const router = Router();
 
 import * as cultivoCtrl from "../controllers/cultivos.controllers.js"
 
-router.post('/datosCultivo', cultivoCtrl.crearCultivos);
+//router.post('/datosCultivo', cultivoCtrl.crearCultivos);
+router.post('/datosCultivo', cultivoCtrl.actualizarCultivos);           // para actualizar si existe o crear si no existe un cultivo con ese usuario
 
 router.get('/datosCultivo', cultivoCtrl.obtenerCultivos);
 

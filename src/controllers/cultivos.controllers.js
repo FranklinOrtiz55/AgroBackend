@@ -136,11 +136,154 @@ export const crearCultivos = async (req, res) =>{
         valueCultivoTipoTrazoLote5,
         tipoTrazoLote5});   // se crea un nuevo Cultivo
 
-    const cultivoGuardado =  await nuevoCultivo.save();           // se guarda el cultivo  creado en una variable.
+        const cultivoGuardado =  await nuevoCultivo.save();           // se guarda el cultivo  creado en una variable.
+        
+        //const cultivoGuardado =  await nuevoCultivo.updateOne();           // se guarda el cultivo  creado en una variable.
 
     res.status(201).json({"data": cultivoGuardado, mensaje: "Cultivo guardado"});     // se devuelve al cliente el producto guardado. incluye _id  y las fechas de creacion y actualizacion.
     console.log ("cultivo guardado");
 }
+
+
+export const actualizarCultivos = async (req, res) =>{
+    const usuario = req.body.usuario;
+    //console.log("usuario que llega para actualizar", usuario)
+    const {
+        Fecha,
+        //usuario, 
+        nombreCultivo,
+        nombreCertificacion,
+        valuePais,
+        pais,
+        valueDepartamento,
+        departamento,
+        valueMunicipio,
+        municipio,
+        corregimiento,
+        valueCultivoTipoProducto,
+        tipoProducto,
+        valueCultivoLotes,
+        cantidadLotes,
+        
+        
+        nombreLote1,
+        cantidadArbolesLote1,
+        fechaLote1,
+        distanciaArbolesLote1,
+        distanciaSurcosLote1,
+        valueCultivoTipoTrazoLote1,
+        tipoTrazoLote1,
+    
+        nombreLote2,
+        cantidadArbolesLote2,
+        fechaLote2,
+        distanciaArbolesLote2,
+        distanciaSurcosLote2,
+        valueCultivoTipoTrazoLote2,
+        tipoTrazoLote2,
+    
+        nombreLote3,
+        cantidadArbolesLote3,
+        fechaLote3,
+        distanciaArbolesLote3,
+        distanciaSurcosLote3,
+        valueCultivoTipoTrazoLote3,
+        tipoTrazoLote3,
+        
+       
+        nombreLote4,
+        cantidadArbolesLote4,
+        fechaLote4,
+        distanciaArbolesLote4,
+        distanciaSurcosLote4,
+        valueCultivoTipoTrazoLote4,
+        tipoTrazoLote4,
+        
+       
+        nombreLote5,
+        cantidadArbolesLote5,
+        fechaLote5,
+        distanciaArbolesLote5,
+        distanciaSurcosLote5,
+        valueCultivoTipoTrazoLote5,
+        tipoTrazoLote5} = req.body           // se extraen los datos del body del requerimiento
+
+let cultivoActualizado = await cultivo.findOneAndUpdate({
+    _id: usuario
+},
+{
+    Fecha,
+    usuario,
+
+    nombreCultivo,
+    nombreCertificacion,
+    valuePais,
+    pais,
+    valueDepartamento,
+    departamento,
+    valueMunicipio,
+    municipio,
+    corregimiento,
+    valueCultivoTipoProducto,
+    tipoProducto,
+    valueCultivoLotes,
+    cantidadLotes,
+    
+    
+    nombreLote1,
+    cantidadArbolesLote1,
+    fechaLote1,
+    distanciaArbolesLote1,
+    distanciaSurcosLote1,
+    valueCultivoTipoTrazoLote1,
+    tipoTrazoLote1,
+
+    nombreLote2,
+    cantidadArbolesLote2,
+    fechaLote2,
+    distanciaArbolesLote2,
+    distanciaSurcosLote2,
+    valueCultivoTipoTrazoLote2,
+    tipoTrazoLote2,
+
+    nombreLote3,
+    cantidadArbolesLote3,
+    fechaLote3,
+    distanciaArbolesLote3,
+    distanciaSurcosLote3,
+    valueCultivoTipoTrazoLote3,
+    tipoTrazoLote3,
+    
+   
+    nombreLote4,
+    cantidadArbolesLote4,
+    fechaLote4,
+    distanciaArbolesLote4,
+    distanciaSurcosLote4,
+    valueCultivoTipoTrazoLote4,
+    tipoTrazoLote4,
+    
+   
+    nombreLote5,
+    cantidadArbolesLote5,
+    fechaLote5,
+    distanciaArbolesLote5,
+    distanciaSurcosLote5,
+    valueCultivoTipoTrazoLote5,
+    tipoTrazoLote5},   // se crea un nuevo Cultivo
+    {upsert: true}
+)
+
+//const cultivoActualizado =  await nuevoCultivo.save();           // se guarda el cultivo  creado en una variable.
+        
+        //const cultivoGuardado =  await nuevoCultivo.updateOne();           // se guarda el cultivo  creado en una variable.
+
+    res.status(201).json({ mensaje: "Cultivo Actualizado"});     // se devuelve al cliente el producto guardado. incluye _id  y las fechas de creacion y actualizacion.
+    console.log ("cultivo Actualizado");
+
+}
+
+
 
 
 
