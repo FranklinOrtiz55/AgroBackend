@@ -38,7 +38,11 @@ const userSchema = new Schema ({
     roles :[{
         ref: "Role",
         type: Schema.Types.ObjectId
-    }]
+    }],
+    cultivo: {
+        type: Boolean,
+        required: true
+    }
 }, {
     timestamps: true,
     versionKey: false

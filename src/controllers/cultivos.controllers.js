@@ -4,6 +4,8 @@
 //import { isObjectIdOrHexString } from 'mongoose';
 import cultivos from '../models/cultivos.js';
 import cultivo from '../models/cultivos.js';
+import { ActualizarUsuario2 } from '../helpers/ActualizauUser.js';
+
 
 
 
@@ -279,6 +281,7 @@ let cultivoActualizado = await cultivo.findOneAndUpdate({
         //const cultivoGuardado =  await nuevoCultivo.updateOne();           // se guarda el cultivo  creado en una variable.
 
     res.status(201).json({ mensaje: "Cultivo Actualizado"});     // se devuelve al cliente el producto guardado. incluye _id  y las fechas de creacion y actualizacion.
+    ActualizarUsuario2(usuario);
     console.log ("cultivo Actualizado");
 
 }

@@ -7,7 +7,7 @@ import generarJWT from "../helpers/jwt.js"
 
 export const singUp = async(req, res)=>{
 
-    const {fecha, nombre, apellido, correo, contrasena1, roles}= req.body;
+    const {fecha, nombre, apellido, correo, contrasena1, roles, cultivo}= req.body;
     console.log (req.body);
 
     const newUser = new User ({
@@ -16,7 +16,8 @@ export const singUp = async(req, res)=>{
         apellido,
         correo,
         contrasena1: await User.encryptPass(contrasena1),
-        roles
+        roles,
+        cultivo
     })
 
     console.log(newUser);
@@ -63,6 +64,6 @@ export const singIn = async(req, res)=>{
     //const token = jwt.sign({id: userFound._id, nombre: userFound.nombre}, config.SECRET, {expiresIn: 400})     // cambio de expiracion
     const token = await generarJWT(userFound.id, userFound.nombre);
 
-    res.json({mensaje:"usuario Correcto", token: token, nombreUsuario: userFound.nombre, rolesUsuario: userFound.roles, userId: userFound.id})                                                           // sa debe devolver un token si el usuario existe
+    res.json({mensaje:"usuario Correcto", token: token, nombreUsuario: userFound.nombre, rolesUsuario: userFound.roles, userId: userFound.id, cultivo: userFound.cultivo})                                                           // sa debe devolver un token si el usuario existe
 
 };

@@ -3,6 +3,24 @@ import generarJWT from "../helpers/jwt.js";
 import User from "../models/users.js";
 
 
+export const ActualizarUsuario = async(req, res)=>{
+
+    let usuarioActualizado = await User.updateOne({
+        _id: req.body.usuario
+    }, {
+        $set: {
+            cultivo: true
+                    }
+    }
+    )
+     
+     res.json({message: "Usuario Actualizado"});
+     
+    };
+
+   
+
+
 
 export const CrearUsuario = async(req, res)=>{
 /*  const {userName, email, password, roles}= req.body;
